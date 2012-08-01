@@ -20,7 +20,7 @@ public class Stream implements AutoCloseable, IDisposable {
     }
 
     @Override
-    public void dispose_FORNOW() throws Exception {
+    public void dispose() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

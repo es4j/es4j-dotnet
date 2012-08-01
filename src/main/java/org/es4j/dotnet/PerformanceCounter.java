@@ -1,7 +1,5 @@
 package org.es4j.dotnet;
 
-import org.es4j.dotnet.IDisposable;
-
 
 public class PerformanceCounter implements IDisposable {
 
@@ -11,10 +9,10 @@ public class PerformanceCounter implements IDisposable {
 
     @Override
     public void close() {
-        dispose_FORNOW();
+        dispose();
     }
     @Override
-    public void dispose_FORNOW() {
+    public void dispose() {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
