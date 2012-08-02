@@ -1,4 +1,6 @@
-package org.es4j.dotnet;
+package org.es4j.dotnet.data;
+
+import org.es4j.dotnet.IDisposable;
 
 
 public class TransactionScope implements IDisposable {
