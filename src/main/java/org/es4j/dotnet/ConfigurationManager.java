@@ -1,13 +1,11 @@
 package org.es4j.dotnet;
 
-import org.es4j.dotnet.data.ConnectionStringSettings;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import org.es4j.dotnet.data.ConnectionStringSettings;
 
-/**
- *
- * @author Esfand
- */
+
 // Provides access to configuration files for client applications. This class
 // cannot be inherited.
 public final class ConfigurationManager {
@@ -30,5 +28,9 @@ public final class ConfigurationManager {
     public static Iterable<ConnectionStringSettings> getConnectionStrings() {
         if(true) throw new UnsupportedOperationException("Not yet implemented");
         return connectionStrings;
+    }
+
+    public static Map<String,Object> getAppSettings() {
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 }
