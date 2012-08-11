@@ -1,7 +1,9 @@
 package org.es4j.dotnet.data;
 
-import org.es4j.dotnet.ConfigurationElement;
-import org.es4j.dotnet.ConfigurationPropertyCollection;
+import java.util.Collections;
+import java.util.Map;
+//import org.es4j.dotnet.ConfigurationElement;
+//import org.es4j.dotnet.ConfigurationPropertyCollection;
 
 /**
  *
@@ -10,7 +12,7 @@ import org.es4j.dotnet.ConfigurationPropertyCollection;
     // Summary:
     //     Represents a single, named connection string in the connection strings configuration
     //     file section.
-public final class ConnectionStringSettings extends ConfigurationElement {
+public final class ConnectionStringSettings { //extends ConfigurationElement {
     
     // Summary:
     //     Initializes a new instance of a System.Configuration.ConnectionStringSettings
@@ -31,7 +33,7 @@ public final class ConnectionStringSettings extends ConfigurationElement {
     //   connectionString:
     //     The connection string.
     public ConnectionStringSettings(String name, String connectionString) {
-        this.name = name;
+        this.name             = name;
         this.connectionString = connectionString;
         throw new UnsupportedOperationException("Not yet implemented");
     }
@@ -51,9 +53,9 @@ public final class ConnectionStringSettings extends ConfigurationElement {
     //   providerName:
     //     The name of the provider to use with the connection string.
     public ConnectionStringSettings(String name, String connectionString, String providerName) {
-        this.name = name;
+        this.name             = name;
         this.connectionString = connectionString;
-        this.providerName = providerName;
+        this.providerName     = providerName;
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
@@ -64,7 +66,6 @@ public final class ConnectionStringSettings extends ConfigurationElement {
     //     The string value assigned to the System.Configuration.ConnectionStringSettings.ConnectionString
     //     property.
     private String connectionString; // { get; set; }
-
     public String getConnectionString() {
         return connectionString;
     }
@@ -80,7 +81,6 @@ public final class ConnectionStringSettings extends ConfigurationElement {
     //     The string value assigned to the System.Configuration.ConnectionStringSettings.Name
     //     property.
     private String name; //{ get; set; }
-
     public String getName() {
         return name;
     }
@@ -89,9 +89,9 @@ public final class ConnectionStringSettings extends ConfigurationElement {
     }
         
     //@Override
-    protected ConfigurationPropertyCollection properties; // { get; }
-    protected ConfigurationPropertyCollection getProperties() {
-        return this.properties;
+    private Map<String, String>/*ConfigurationPropertyCollection*/ properties; // { get; }
+    public Map<String, String>/*ConfigurationPropertyCollection*/ getProperties() {
+        return Collections.unmodifiableMap(this.properties);
     }
         
     //

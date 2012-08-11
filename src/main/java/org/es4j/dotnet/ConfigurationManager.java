@@ -1,16 +1,45 @@
 package org.es4j.dotnet;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collections;
 import java.util.Map;
+import java.util.Properties;
 import org.es4j.dotnet.data.ConnectionStringSettings;
 
+// Provides access to configuration files for client applications. 
+// This class cannot be inherited.
+public class ConfigurationManager {
 
-// Provides access to configuration files for client applications. This class
-// cannot be inherited.
-public final class ConfigurationManager {
-    
-    private static final List<ConnectionStringSettings>  connectionStrings = new LinkedList<ConnectionStringSettings>();
+    // Gets the System.Configuration.AppSettingsSection data for the current application's
+    // default configuration.
+    //
+    // Returns:
+    //     Returns a System.Collections.Specialized.NameValueCollection object that
+    //     contains the contents of the System.Configuration.AppSettingsSection object
+    //     for the current application's default configuration.
+    //
+    // Exceptions:
+    //   System.Configuration.ConfigurationErrorsException:
+    //     Could not retrieve a System.Collections.Specialized.NameValueCollection object
+    //     with the application settings data.
+    private static Properties appSettings = null;  //{get; }
+    public static Properties getAppSettings() {
+        if(appSettings != null) {
+            return appSettings;
+        }
+        
+        ClassLoader classLoader = java.lang.Thread.currentThread().getContextClassLoader();
+        InputStream input       = classLoader.getResourceAsStream("app.properties");
+        
+        appSettings= new Properties();
+        try {
+            appSettings.load(input );
+        } catch (IOException ex) {
+            throw new RuntimeException("File Not Found");
+        }
+        return appSettings;
+    }
 
     // Gets the System.Configuration.ConnectionStringsSection data for the current
     // application's default configuration.
@@ -24,13 +53,118 @@ public final class ConfigurationManager {
     //   System.Configuration.ConfigurationErrorsException:
     //     Could not retrieve a System.Configuration.ConnectionStringSettingsCollection
     //     object.
-    //private static Iterable<ConnectionStringSettings> connectionStrings; // { get; }
-    public static Iterable<ConnectionStringSettings> getConnectionStrings() {
-        if(true) throw new UnsupportedOperationException("Not yet implemented");
-        return connectionStrings;
-    }
-
-    public static Map<String,Object> getAppSettings() {
+    public static Iterable<ConnectionStringSettings> getConnectionStrings() { // { get; }
         throw new UnsupportedOperationException("Not yet implemented");
     }
+
+    // Summary:
+    //     Retrieves a specified configuration section for the current application's
+    //     default configuration.
+    //
+    // Parameters:
+    //   sectionName:
+    //     The configuration section path and name.
+    //
+    // Returns:
+    //     The specified System.Configuration.ConfigurationSection object, or null if
+    //     the section does not exist.
+    //
+    // Exceptions:
+    //   System.Configuration.ConfigurationErrorsException:
+    //     A configuration file could not be loaded.
+    //public static object GetSection(string sectionName);
+
+    // Summary:
+    //     Opens the configuration file for the current application as a System.Configuration.Configuration
+    //     object.
+    //
+    // Parameters:
+    //   userLevel:
+    //     The System.Configuration.ConfigurationUserLevel for which you are opening
+    //     the configuration.
+    //
+    // Returns:
+    //     A System.Configuration.Configuration object.
+    //
+    // Exceptions:
+    //   System.Configuration.ConfigurationErrorsException:
+    //     A configuration file could not be loaded.
+    //public static Configuration OpenExeConfiguration(ConfigurationUserLevel userLevel);
+
+    // Summary:
+    //     Opens the specified client configuration file as a System.Configuration.Configuration
+    //     object.
+    //
+    // Parameters:
+    //   exePath:
+    //     The path of the configuration file. The configuration file resides in the
+    //     same directory as the executable file.
+    //
+    // Returns:
+    //     A System.Configuration.Configuration object.
+    //
+    // Exceptions:
+    //   System.Configuration.ConfigurationErrorsException:
+    //     A configuration file could not be loaded.
+    //public static Configuration OpenExeConfiguration(string exePath);
+
+    // Summary:
+    //     Opens the machine configuration file on the current computer as a System.Configuration.Configuration
+    //     object.
+    //
+    // Returns:
+    //     A System.Configuration.Configuration object.
+    //
+    // Exceptions:
+    //   System.Configuration.ConfigurationErrorsException:
+    //     A configuration file could not be loaded.
+    //public static Configuration OpenMachineConfiguration();
+
+    // Summary:
+    //     Opens the specified client configuration file as a System.Configuration.Configuration
+    //     object that uses the specified file mapping and user level.
+    //
+    // Parameters:
+    //   fileMap:
+    //     An System.Configuration.ExeConfigurationFileMap object that references configuration
+    //     file to use instead of the application default configuration file.
+    //
+    //   userLevel:
+    //     The System.Configuration.ConfigurationUserLevel object for which you are
+    //     opening the configuration.
+    //
+    // Returns:
+    //     A System.Configuration.Configuration object.
+    //
+    // Exceptions:
+    //   System.Configuration.ConfigurationErrorsException:
+    //     A configuration file could not be loaded.
+    //public static Configuration OpenMappedExeConfiguration(ExeConfigurationFileMap fileMap, ConfigurationUserLevel userLevel);
+
+    // Summary:
+    //     Opens the machine configuration file as a System.Configuration.Configuration
+    //     object that uses the specified file mapping.
+    //
+    // Parameters:
+    //   fileMap:
+    //     An System.Configuration.ExeConfigurationFileMap object that references configuration
+    //     file to use instead of the application default configuration file.
+    //
+    // Returns:
+    //     A System.Configuration.Configuration object.
+    //
+    // Exceptions:
+    //   System.Configuration.ConfigurationErrorsException:
+    //     A configuration file could not be loaded.
+    //public static Configuration OpenMappedMachineConfiguration(ConfigurationFileMap fileMap);
+
+    // Summary:
+    //     Refreshes the named section so the next time that it is retrieved it will
+    //     be re-read from disk.
+    //
+    // Parameters:
+    //   sectionName:
+    //     The configuration section name or the configuration path and section name
+    //     of the section to refresh.
+    //public static void RefreshSection(string sectionName);
 }

@@ -6,7 +6,7 @@ package org.es4j.dotnet;
 
     // Contains a collection of System.Configuration.ConnectionStringSettings objects.
     //[ConfigurationCollection(typeof(ConnectionStringSettings))]
-public final class ConnectionStringSettingsCollection extends ConfigurationElementCollection {
+public final class ConnectionStringSettingsCollection {// extends ConfigurationElementCollection {
         
     // Initializes a new instance of the System.Configuration.ConnectionStringSettingsCollection
     // class.
