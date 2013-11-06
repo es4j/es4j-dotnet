@@ -1,86 +1,21 @@
 package org.es4j.dotnet.streams;
 
+import java.io.Serializable;
 import org.es4j.dotnet.IDisposable;
+//import org.es4j.dotnet.http.IAsyncResult;
 
-/*
-class Stream1 implements AutoCloseable, IDisposable {
 
-    @Override
-    public void close() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    protected void dispose(boolean disposing) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public byte[] toArray() {
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
-
-    public boolean canRead() {
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
-
-    @Override
-    public void dispose() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public boolean canSeek() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public boolean canWrite() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public long length() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public long getPosition() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public void setPosition(long position) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public void flush() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public long seek(long offset, SeekOrigin origin) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public void setLength(long value) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public int read(byte[] buffer, int offset, int count) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-|
-    public void write(byte[] buffer, int offset, int count) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-}
-*/
-
+//namespace System.IO
 //using System;
 //using System.Runtime;
 //using System.Runtime.InteropServices;
 //using System.Threading;
 
-//namespace System.IO
-//{
-// Summary:
-//     Provides a generic view of a sequence of bytes.
+
+// Provides a generic view of a sequence of bytes.
 //[Serializable]
 //[ComVisible(true)]
- public abstract class Stream implements IDisposable { // : MarshalByRefObject, IDisposable
+ public abstract class Stream implements IDisposable, Serializable { // : MarshalByRefObject, IDisposable
 
      @Override
     public void close() throws Exception {
@@ -127,7 +62,7 @@ class Stream1 implements AutoCloseable, IDisposable {
     // Exceptions:
     //   System.IO.IOException:
     //     An I/O error occurs.
-    public abstract void flush();
+    //public abstract void flush();
     
 
     // Summary:
@@ -171,7 +106,7 @@ class Stream1 implements AutoCloseable, IDisposable {
     //
     //   System.ObjectDisposedException:
     //     Methods were called after the stream was closed.
-    public abstract int read(byte[] buffer, int offset, int count);
+    //public abstract int read(byte[] buffer, int offset, int count);
 
     // Summary:
     //     When overridden in a derived class, writes a sequence of bytes to the current
@@ -210,7 +145,7 @@ class Stream1 implements AutoCloseable, IDisposable {
     //     Methods were called after the stream was closed.
     public abstract void write(byte[] buffer, int offset, int count);   
     
-/*
+
     // Summary:
     //     When overridden in a derived class, gets a value indicating whether the current
     //     stream supports reading.
@@ -304,7 +239,7 @@ class Stream1 implements AutoCloseable, IDisposable {
     // Summary:
     //     Provides support for a System.Diagnostics.Contracts.Contract.
     //virtual
-    protected void ObjectInvariant() {
+    protected void objectInvariant() {
         throw new UnsupportedOperationException("Not yet implemented");
     }
     
@@ -704,6 +639,6 @@ class Stream1 implements AutoCloseable, IDisposable {
     public void writeByte(byte value) {
         throw new UnsupportedOperationException("Not yet implemented");
     }
-*/
+
 }
 
